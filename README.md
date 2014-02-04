@@ -1,4 +1,4 @@
-lavadoc
+LavaDoc
 =======
 
 The LavaDoc Source Code Documentation Generator is written in Python 3 with a vision to use intuitive markup inside source code comments to generate simple, functional documentation.
