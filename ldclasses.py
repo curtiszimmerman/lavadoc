@@ -21,4 +21,10 @@
 # @version 0.1.0
 # @todo Integrate command-line options.
 
-ldclasses.py
+#ldclasses.py
+
+import sys
+
+def sysprint( data ):
+  sys.stdout.write(data)
+  sys.stdout.flush()

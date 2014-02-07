@@ -42,3 +42,37 @@
 # @task parse Parse source code.
 # @task genDoc Generate source code documentation.
 # @task output Output documentation file.
+
+import argparse, re
+import ldclasses
+
+parser = argparse.ArgumentParser(
+  description='LavaDoc Source Code Documentation Generator',
+  prog='lavadoc.py',
+  usage='lavadoc.py'
+)
+parser.add_argument('-c', '--css',
+  const=False,
+  default=False,
+  dest=cssfile,
+  help='css template of documentation output',
+  nargs='?',
+  type=argparse.FileType('r')
+)
+parser.add_argument('-t', '--html',
+  const=False,
+  default=False,
+  dest=htmlfile,
+  help='html template of documentation output',
+  nargs='?',
+  type=argparse.FileType('r')
+)
+
+infile = open('', 'r')
+indata = infile.read()
+
+with infile.readline() as line:
+  #foo
+  print(line)
+
+# end of file
