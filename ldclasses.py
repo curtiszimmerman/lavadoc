@@ -18,13 +18,123 @@
 # @contact contact@reddivision.net
 # @license http://www.reddivision.net/license.html
 # @maintainer Curtis Zimmerman
-# @version 0.1.0
+# @version 0.1.0_prealpha
 # @todo Integrate command-line options.
-
-#ldclasses.py
 
 import sys
 
 def sysprint( data ):
   sys.stdout.write(data)
   sys.stdout.flush()
+
+##############################################################
+##############################################################
+#
+# project
+#   name
+#   description
+#   special*
+#   todo*
+#   +author*
+#   +copyright*
+#   +contact*
+#   +license*
+#   +maintainer*
+#   +version*
+# file
+#   name
+#   description
+#   special*
+#   todo*
+#   =arg*
+#   +author*
+#   +copyright*
+#   +contact*
+#   +license*
+#   +maintainer*
+#   +version*
+# class
+#   name
+#   description
+#   special*
+#   todo*
+#   +inherits
+#   +property
+# function
+#   name
+#   description
+#   special*
+#   todo*
+#   +class
+#   +param
+#   +returns
+# task
+#   name
+#   description
+#   special*
+#   todo*
+# variable
+#   name
+#   description
+#   special*
+#   type
+#
+##################################################
+##################################################
+#
+# [ LABEL ]
+#   (str) name
+#   (str) description
+#   (str) *special
+#
+# [ TODO ]
+#   (array) *todo
+#
+# [ TYPE ]
+#   (str) type
+#
+# [ CLASS ]
+#   (str) *inherits
+#   (array) *property
+#
+# [ FUNCTION ]
+#   (str) *class
+#   (array) param
+#   (str) returns
+#
+# [ PROJECT ]
+#   (str) *author
+#   (str) *copyright
+#   (str) *contact
+#   (str) *license
+#   (str) *maintainer
+#   (str) *version
+#
+# [ FILE ]
+#   (array) *arg
+#
+##################################################
+##################################################
+#
+# LABEL = (task)
+# LABEL + TYPE = (variable)
+# LABEL + PROJECT = (project)
+# LABEL + PROJECT + FILE = (file)
+# LABEL + CLASS = (class)
+# LABEL + FUNCTION = (function)
+#
+##################################################
+##################################################
+
+
+##################################################
+##################################################
+
+##
+# @class
+# this class blah blah blah
+# @inherits none
+# @property
+# @property
+class Label:
+  pass

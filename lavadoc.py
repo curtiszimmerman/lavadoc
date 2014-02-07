@@ -44,17 +44,24 @@
 # @task output Output documentation file.
 
 import argparse, re
+# ldclasses.py is 
 import ldclasses
 
+## @variable string lavadoc version
+app_version_base = 'v0.1.0'
+## @variable string lavadoc build phase
+app_version_phase = '_pre-alpha'
+
+##
+# @
 parser = argparse.ArgumentParser(
   description='LavaDoc Source Code Documentation Generator',
-  prog='lavadoc.py',
-  usage='lavadoc.py'
+  usage='lavadoc.py [OPTIONS] [BASEFILE]'
 )
 parser.add_argument('-c', '--css',
   const=False,
   default=False,
-  dest=cssfile,
+#  dest=cssfile,
   help='css template of documentation output',
   nargs='?',
   type=argparse.FileType('r')
@@ -62,13 +69,24 @@ parser.add_argument('-c', '--css',
 parser.add_argument('-t', '--html',
   const=False,
   default=False,
-  dest=htmlfile,
+#  dest=htmlfile,
   help='html template of documentation output',
   nargs='?',
   type=argparse.FileType('r')
 )
+parser.add_argument('basefile',
+  help='file used for root of project tree (e.g. main.c)',
+  metavar='basefile',
+  nargs=1,
+  type=argparse.FileType('r')
+)
+parser.add_argument('-v', '--version',
+  action='version',
+  version='lavadoc.py '+app_version_base+app_version_phase+' by curtis.zimmerman@gmail.com'
+)
+args = parser.parse_args()
 
-infile = open('', 'r')
+infile = open(args.basefile, 'r')
 indata = infile.read()
 
 with infile.readline() as line:
