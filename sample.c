@@ -1,11 +1,3 @@
-LavaDoc
-=======
-
-The LavaDoc Source Code Documentation Generator is written in Python 3 with a vision to use intuitive markup inside source code comments to generate simple, functional documentation.
-
-Here's an example showing the most basic syntax and features of LavaDoc's comment markup and functionality:
-
-````
 /**
  * @project AwesomeProject
  * This is the description of AwesomeProject.
@@ -52,4 +44,3 @@ int main( int argc, char **argv ) {
   printf("Awesome Project has %d things!\n", stuff);
   return 0;
 }
-````
