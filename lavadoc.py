@@ -48,7 +48,7 @@ import argparse, re
 import ldclasses
 
 ## @variable string lavadoc version
-app_version_base = 'v0.1.0'
+app_version_base = 'v0.0.2'
 ## @variable string lavadoc build phase
 app_version_phase = '_pre-alpha'
 
