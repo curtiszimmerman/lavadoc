@@ -99,12 +99,13 @@ def parse_file( infile ):
   ## @doc python.docstring
   """Parse input file.
   """
+  output = base_object
   infile_handle = open(infile, 'r')
   infile_data = infile_handle.readlines()
   for line in infile_data:
     #foo
     sysprint(line)
-  return 0
+  return output
 
 ##
 # @function sysprint
@@ -116,7 +117,6 @@ def sysprint( data ):
   """
   sys.stdout.write(data)
   sys.stdout.flush()
-  return 0
 
 def main():
   ## @doc python.docstring

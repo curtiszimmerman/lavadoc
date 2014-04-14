@@ -147,3 +147,4 @@ class Type:
     Label.__init__(self, name, desc, spec)
     self.type = ''
 
+#EOF
