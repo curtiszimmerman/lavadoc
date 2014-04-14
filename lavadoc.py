@@ -58,77 +58,77 @@ __version__ = 'v0.0.2-alpha'
 # @function make_parser
 # @returns parser object
 def make_parser():
-  ## @doc python.docstring
-  """Make argument parser object and return it for parsing.
-  """
-  parser = argparse.ArgumentParser(
-    description='LavaDoc Source Code Documentation Generator',
-    usage='lavadoc.py [options] [basefile]'
-  )
-  parser.add_argument('--css',
-    help='css template of documentation output'
-  )
-  parser.add_argument('--html',
-    help='html template of documentation output'
-  )
-  parser.add_argument('basefile',
-    help='file used for root of project tree (e.g. main.c)',
-    metavar='basefile'
-  )
-  parser.add_argument('-v', '--version',
-    action='version',
-    version='lavadoc.py '+__version__+' by curtis.zimmerman@gmail.com'
-  )
-  return parser
+    ## @doc python.docstring
+    """Make argument parser object and return it for parsing.
+    """
+    parser = argparse.ArgumentParser(
+        description='LavaDoc Source Code Documentation Generator',
+        usage='lavadoc.py [options] [basefile]'
+    )
+    parser.add_argument('--css',
+        help='css template of documentation output'
+    )
+    parser.add_argument('--html',
+        help='html template of documentation output'
+    )
+    parser.add_argument('basefile',
+        help='file used for root of project tree (e.g. main.c)',
+        metavar='basefile'
+    )
+    parser.add_argument('-v', '--version',
+        action='version',
+        version='lavadoc.py '+__version__+' by curtis.zimmerman@gmail.com'
+    )
+    return parser
 
 ##
 # @function output_content
 # @param object output object constructed by parse_file()
 # @returns int status of operation
 def output_content( output_object ):
-  ## @doc python.docstring
-  """ Output the constructed content object to web content.
-  """
-  return 0
+    ## @doc python.docstring
+    """ Output the constructed content object to web content.
+    """
+    return 0
 
 ##
 # @function parse_file
 # @param string name of file to parse
 # @returns object output object
 def parse_file( infile ):
-  ## @doc python.docstring
-  """Parse input file.
-  """
-  output = base_object
-  infile_handle = open(infile, 'r')
-  infile_data = infile_handle.readlines()
-  for line in infile_data:
-    #foo
-    sysprint(line)
-  return output
+    ## @doc python.docstring
+    """Parse input file.
+    """
+    output = base_object
+    infile_handle = open(infile, 'r')
+    infile_data = infile_handle.readlines()
+    for line in infile_data:   
+         #foo
+        sysprint(line)
+    return output
 
 ##
 # @function sysprint
 # @param string data to print to standard output
 # @returns int status of operation
 def sysprint( data ):
-  ## @doc python.docstring
-  """Bare print specified data.
-  """
-  sys.stdout.write(data)
-  sys.stdout.flush()
+    ## @doc python.docstring
+    """Bare print specified data.
+    """
+    sys.stdout.write(data)
+    sys.stdout.flush()
 
 def main():
-  ## @doc python.docstring
-  """Entry point orchestrating what module does when run as script.
-  """
-  parser = make_parser()
-  args = parser.parse_args()
-  output = parse_file(args.basefile)
-  status = output_content(output)
-  sys.exit(status or 0)
+    ## @doc python.docstring
+    """Entry point orchestrating what module does when run as script.
+    """
+    parser = make_parser()
+    args = parser.parse_args()
+    output = parse_file(args.basefile)
+    #status = output_content(output)
+    sys.exit(status or 0)
 
 if __name__ == "__main__":
-  main()
+    main()
 
 #EOF

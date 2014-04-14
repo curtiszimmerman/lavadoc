@@ -137,14 +137,18 @@ def sysprint( data ):
 # @property
 # @property
 class Label:
-  def __init__( self, name, desc, spec ):
-    self.name = name
-    self.description = desc
-    self.special = spec
+    def __init__( self, name, desc, spec ):
+        self.name = name
+    	self.description = desc
+    	self.special = spec
 
 class Type:
-  def __init__( self, type ):
-    Label.__init__(self, name, desc, spec)
-    self.type = ''
+ 	def __init__( self, type ):
+    	Label.__init__(self, name, desc, spec)
+    	self.type = ''
+
+class Output_Base:
+	def __init__( self, name ):
+		self.name = name
 
 #EOF
