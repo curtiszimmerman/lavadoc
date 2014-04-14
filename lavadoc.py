@@ -12,9 +12,10 @@
 # documentation for an entire project, your main source file (main.cpp, 
 # for example) must contain the @@project label, which anchors LavaDoc 
 # to that file in relation to the rest of your project.
+# @author Curtis Zimmerman
 # @copyright (C)2014 Red Division Development
 # @contact contact@reddivision.net
-# @license BSD3
+# @license GPLv3
 # @version 0.0.2a
 # @todo Create Python Module from this project.
 ##
@@ -33,9 +34,8 @@
 # @author Curtis Zimmerman
 # @copyright (C)2014 Red Division Development
 # @contact contact@reddivision.net
-# @license http://www.reddivision.net/license.html
-# @maintainer Curtis Zimmerman
-# @version 0.1.0
+# @license GPLv3
+# @version 0.0.2a
 # @todo Integrate command-line options.
 ##
 # @task input Accept source code input file and verify code type.
@@ -45,6 +45,7 @@
 
 import argparse
 import re
+import sys
 # ldclasses.py brings the document objects into this space
 import ldclasses
 
@@ -60,29 +61,17 @@ def make_parser():
   """
   parser = argparse.ArgumentParser(
     description='LavaDoc Source Code Documentation Generator',
-    usage='lavadoc.py [OPTIONS] [BASEFILE]'
+    usage='lavadoc.py [options] [basefile]'
   )
-  parser.add_argument('-c', '--css',
-    const=False,
-    default=False,
-  #  dest=cssfile,
-    help='css template of documentation output',
-    nargs='?',
-    type=argparse.FileType('r')
+  parser.add_argument('--css',
+    help='css template of documentation output'
   )
-  parser.add_argument('-t', '--html',
-    const=False,
-    default=False,
-  #  dest=htmlfile,
-    help='html template of documentation output',
-    nargs='?',
-    type=argparse.FileType('r')
+  parser.add_argument('--html',
+    help='html template of documentation output'
   )
   parser.add_argument('basefile',
     help='file used for root of project tree (e.g. main.c)',
-    metavar='basefile',
-    nargs=1,
-    type=argparse.FileType('r')
+    metavar='basefile'
   )
   parser.add_argument('-v', '--version',
     action='version',
@@ -100,12 +89,11 @@ def main():
   parser = make_parser()
   args = parser.parse_args()
 
-  infile = open(args.basefile, 'r')
-  indata = infile.read()
-
-  with infile.readline() as line:
+  infile_handle = open(args.basefile, 'r')
+  infile_data = infile_handle.readlines()
+  for line in infile_data:
     #foo
-    print(line)
+    sysprint(line)
 
 if __name__ == "__main__":
   main()
