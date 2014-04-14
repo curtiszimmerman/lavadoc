@@ -1,17 +1,19 @@
 #!/usr/bin/python3
 ##
 # @project LavaDoc Documentation Generator
-# LavaDoc is a general purpose documentation generator developed by 
-# Red Division Development. It is written in Python 3 and currently 
-# supports documentation for JavaScript, C/C++, PHP and Python. Running 
-# `lavadoc.py filename` a single HTML file named 'filename-doc.html' 
-# with the documentation contained therein. By running 
-# `lavadoc.py ./directory`, LavaDoc will generate a complete project 
-# documentation set in a subdirectory called 'lavadoc' with a root 
-# 'index.html' file. Please note that if you intend to generate 
-# documentation for an entire project, your main source file (main.cpp, 
-# for example) must contain the @@project label, which anchors LavaDoc 
-# to that file in relation to the rest of your project.
+# @doc python.docstring
+"""LavaDoc is a general purpose documentation generator developed by 
+Red Division Development. It is written in Python 3 and currently 
+supports documentation for JavaScript, C/C++, PHP and Python. Running 
+`lavadoc.py filename` a single HTML file named 'filename-doc.html' 
+with the documentation contained therein. By running 
+`lavadoc.py ./directory`, LavaDoc will generate a complete project 
+documentation set in a subdirectory called 'lavadoc' with a root 
+'index.html' file. Please note that if you intend to generate 
+documentation for an entire project, your main source file (main.cpp, 
+for example) must contain the @@project label, which anchors LavaDoc 
+to that file in relation to the rest of your project.
+"""
 # @author Curtis Zimmerman
 # @copyright (C)2014 Red Division Development
 # @contact contact@reddivision.net
@@ -54,10 +56,10 @@ __version__ = 'v0.0.2-alpha'
 
 ##
 # @function make_parser
-# create argument parser
-# return parser object
+# @returns parser object
 def make_parser():
-  """Make argument parser object and return it for parsing
+  ## @doc python.docstring
+  """Make argument parser object and return it for parsing.
   """
   parser = argparse.ArgumentParser(
     description='LavaDoc Source Code Documentation Generator',
@@ -79,21 +81,52 @@ def make_parser():
   )
   return parser
 
-def sysprint( data ):
-  sys.stdout.write(data)
-  sys.stdout.flush()
-
-def main():
-  """Entry point orchestrating what module does when run as script
+##
+# @function output_content
+# @param object output object constructed by parse_file()
+# @returns int status of operation
+def output_content( output_object ):
+  ## @doc python.docstring
+  """ Output the constructed content object to web content.
   """
-  parser = make_parser()
-  args = parser.parse_args()
+  return 0
 
-  infile_handle = open(args.basefile, 'r')
+##
+# @function parse_file
+# @param string name of file to parse
+# @returns object output object
+def parse_file( infile ):
+  ## @doc python.docstring
+  """Parse input file.
+  """
+  infile_handle = open(infile, 'r')
   infile_data = infile_handle.readlines()
   for line in infile_data:
     #foo
     sysprint(line)
+  return 0
+
+##
+# @function sysprint
+# @param string data to print to standard output
+# @returns int status of operation
+def sysprint( data ):
+  ## @doc python.docstring
+  """Bare print specified data.
+  """
+  sys.stdout.write(data)
+  sys.stdout.flush()
+  return 0
+
+def main():
+  ## @doc python.docstring
+  """Entry point orchestrating what module does when run as script.
+  """
+  parser = make_parser()
+  args = parser.parse_args()
+  output = parse_file(args.basefile)
+  status = output_content(output)
+  sys.exit(status or 0)
 
 if __name__ == "__main__":
   main()
