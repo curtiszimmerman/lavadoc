@@ -15,7 +15,7 @@
 # @copyright (C)2014 Red Division Development
 # @contact contact@reddivision.net
 # @license BSD3
-# @version 0.1.0
+# @version 0.0.2a
 # @todo Create Python Module from this project.
 ##
 # @file lavadoc.py
@@ -43,54 +43,71 @@
 # @task genDoc Generate source code documentation.
 # @task output Output documentation file.
 
-import argparse, re
-# ldclasses.py is 
+import argparse
+import re
+# ldclasses.py brings the document objects into this space
 import ldclasses
 
 ## @variable string lavadoc version
-app_version_base = 'v0.0.2'
-## @variable string lavadoc build phase
-app_version_phase = '_pre-alpha'
+__version__ = 'v0.0.2-alpha'
 
 ##
-# @
-parser = argparse.ArgumentParser(
-  description='LavaDoc Source Code Documentation Generator',
-  usage='lavadoc.py [OPTIONS] [BASEFILE]'
-)
-parser.add_argument('-c', '--css',
-  const=False,
-  default=False,
-#  dest=cssfile,
-  help='css template of documentation output',
-  nargs='?',
-  type=argparse.FileType('r')
-)
-parser.add_argument('-t', '--html',
-  const=False,
-  default=False,
-#  dest=htmlfile,
-  help='html template of documentation output',
-  nargs='?',
-  type=argparse.FileType('r')
-)
-parser.add_argument('basefile',
-  help='file used for root of project tree (e.g. main.c)',
-  metavar='basefile',
-  nargs=1,
-  type=argparse.FileType('r')
-)
-parser.add_argument('-v', '--version',
-  action='version',
-  version='lavadoc.py '+app_version_base+app_version_phase+' by curtis.zimmerman@gmail.com'
-)
-args = parser.parse_args()
+# @function make_parser
+# create argument parser
+# return parser object
+def make_parser():
+  """Make argument parser object and return it for parsing
+  """
+  parser = argparse.ArgumentParser(
+    description='LavaDoc Source Code Documentation Generator',
+    usage='lavadoc.py [OPTIONS] [BASEFILE]'
+  )
+  parser.add_argument('-c', '--css',
+    const=False,
+    default=False,
+  #  dest=cssfile,
+    help='css template of documentation output',
+    nargs='?',
+    type=argparse.FileType('r')
+  )
+  parser.add_argument('-t', '--html',
+    const=False,
+    default=False,
+  #  dest=htmlfile,
+    help='html template of documentation output',
+    nargs='?',
+    type=argparse.FileType('r')
+  )
+  parser.add_argument('basefile',
+    help='file used for root of project tree (e.g. main.c)',
+    metavar='basefile',
+    nargs=1,
+    type=argparse.FileType('r')
+  )
+  parser.add_argument('-v', '--version',
+    action='version',
+    version='lavadoc.py '+__version__+' by curtis.zimmerman@gmail.com'
+  )
+  return parser
 
-infile = open(args.basefile, 'r')
-indata = infile.read()
+def sysprint( data ):
+  sys.stdout.write(data)
+  sys.stdout.flush()
 
-with infile.readline() as line:
-  #foo
-  print(line)
+def main():
+  """Entry point orchestrating what module does when run as script
+  """
+  parser = make_parser()
+  args = parser.parse_args()
 
-# end of file
+  infile = open(args.basefile, 'r')
+  indata = infile.read()
+
+  with infile.readline() as line:
+    #foo
+    print(line)
+
+if __name__ == "__main__":
+  main()
+
+#EOF
