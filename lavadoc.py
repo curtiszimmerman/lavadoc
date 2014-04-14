@@ -18,7 +18,7 @@ to that file in relation to the rest of your project.
 # @copyright (C)2014 Red Division Development
 # @contact contact@reddivision.net
 # @license GPLv3
-# @version 0.0.2a
+# @version 0.0.4-alpha
 # @todo Create Python Module from this project.
 ##
 # @file lavadoc.py
@@ -37,7 +37,7 @@ to that file in relation to the rest of your project.
 # @copyright (C)2014 Red Division Development
 # @contact contact@reddivision.net
 # @license GPLv3
-# @version 0.0.2a
+# @version 0.0.4-alpha
 # @todo Integrate command-line options.
 ##
 # @task input Accept source code input file and verify code type.
@@ -52,7 +52,7 @@ import sys
 import ldclasses
 
 ## @variable string lavadoc version
-__version__ = 'v0.0.2-alpha'
+__version__ = 'v0.0.4-alpha'
 
 ##
 # @function make_parser
