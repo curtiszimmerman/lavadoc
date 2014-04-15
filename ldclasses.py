@@ -174,12 +174,43 @@ class DocType:
 ##########################################################################
 ##########################################################################
 
+class OutputLine:
+	"""Defines line documentation object for output.
+	"""
+	def __init__( self, line_name, parent ):
+		self.line_name = line_name
+		self.parent = parent
+		self.children = []
+	def add_child( element ):
+		self.children.append(element)
+
 class OutputPage:
-	def __init__( self, name ):
-		self.page_name = name
+	"""Defines page documentation object for output.
+	"""
+	def __init__( self, page_name, parent ):
+		self.page_name = page_name
+		self.parent = parent
+		self.children = []
+	def add_child( element ):
+		self.children.append(element)
+
+class OutputParagraph:
+	"""Defines paragraph documentation object for output.
+	"""
+	def __init__( self, paragraph_name, parent ):
+		self.paragraph_name = paragraph_name
+		self.parent = parent
+		self.children = []
+	def add_child( element ):
+		self.children.append(element)
 
 class OutputProject:
-	def __init__( self, name ):
+	"""Defines project documentation object for output.
+	"""
+	def __init__( self, project_name ):
 		self.project_name = name
+		self.children = []
+	def add_child( element ):
+		self.children.append(element)
 
 #EOF
